@@ -1,0 +1,32 @@
+# Agent pipeline
+langgraph==0.2.28
+langchain-google-vertexai==2.0.0
+langchain-core==0.3.0
+
+# LLM structured output
+instructor==1.4.0
+pydantic==2.8.0
+
+# PDF + data
+pdfplumber==0.11.0
+yfinance==0.2.44
+pandas==2.1.4
+requests==2.32.0
+
+# Databricks write-back
+databricks-sdk==0.32.0
+databricks-sql-connector==3.2.0
+
+# GCP
+google-cloud-storage==2.18.0
+google-cloud-secret-manager==2.20.0
+
+# Observability
+langfuse==2.36.0
+mlflow==2.15.0
+
+# Serving
+streamlit==1.38.0
+
+# Dev
+python-dotenv==1.0.0

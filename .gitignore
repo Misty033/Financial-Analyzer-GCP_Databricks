@@ -1,0 +1,26 @@
+# Secrets
+.env
+.env.local
+sa-key.json
+sa-key.json.json
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+*.egg-info/
+
+# IDE
+.vscode/
+.idea/
+
+# Test files
+test_peers.py
+test_mlflow.py
+test.py
+
+# OS
+.DS_Store
+Thumbs.db

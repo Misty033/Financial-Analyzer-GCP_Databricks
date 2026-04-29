@@ -1,0 +1,33 @@
+# Secrets / local config
+.env
+.env.*
+sa-key.json
+*.json.key
+*.pem
+
+# Git / editor
+.git
+.gitignore
+.github/
+.vscode/
+.idea/
+
+# Python cache / virtualenv
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+*.egg-info/
+
+# Local tests / scratch files
+test.py
+test_peers.py
+test_mlflow.py
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log

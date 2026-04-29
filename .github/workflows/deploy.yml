@@ -1,0 +1,42 @@
+name: Deploy Financial Analyst Pipeline
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Authenticate to GCP
+        uses: google-github-actions/auth@v1
+        with:
+          credentials_json: ${{ secrets.GCP_SA_KEY }}
+
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v1
+
+      - name: Build Docker image via Cloud Build
+        run: |
+          gcloud builds submit \
+            --tag gcr.io/${{ secrets.GCP_PROJECT_ID }}/financial-pipeline \
+            --project ${{ secrets.GCP_PROJECT_ID }}
+
+      - name: Update Cloud Run Job
+        run: |
+          gcloud run jobs update financial-pipeline-job \
+            --image gcr.io/${{ secrets.GCP_PROJECT_ID }}/financial-pipeline \
+            --region us-central1 \
+            --project ${{ secrets.GCP_PROJECT_ID }}
